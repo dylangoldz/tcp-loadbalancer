@@ -39,10 +39,13 @@ def handle_client(client_socket):
         
         client_thread.join()
         backend_thread.join()
+
     except Exception as e:
         print(f"Error connecting to backend {backend_ip}:{backend_port} - {e}")
     finally:
         client_socket.close()
+        backend_socket.close()
+    
 
 def forward_data(source, destination):
     """Forwards data between two sockets."""
@@ -54,9 +57,6 @@ def forward_data(source, destination):
             destination.sendall(data)
     except Exception as e:
         print(f"Connection closed: {e}")
-    finally:
-        source.close()
-        destination.close()
 
 def start_load_balancer(host="0.0.0.0", port=8080):
     """Starts the L4 load balancer."""
