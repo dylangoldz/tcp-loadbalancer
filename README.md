@@ -1,4 +1,4 @@
-# tcp-loadbalancer# TCP Load Balancer
+# TCP Load Balancer
 
 ## Overview
 
