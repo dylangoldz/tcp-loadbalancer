@@ -1,0 +1,50 @@
+services:
+  loadbalancer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.lb
+    ports:
+      - "8080:8080"
+    networks:
+      - loadbalancer_net
+    depends_on:
+      - backend1
+      - backend2
+      - backend3
+
+  backend1:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    environment:
+      - PORT=9001
+    expose:
+      - "9001"
+    networks:
+      - loadbalancer_net
+
+  backend2:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    environment:
+      - PORT=9002
+    expose:
+      - "9002"
+    networks:
+      - loadbalancer_net
+
+  backend3:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    environment:
+      - PORT=9003
+    expose:
+      - "9003"
+    networks:
+      - loadbalancer_net
+
+networks:
+  loadbalancer_net:
+    driver: bridge

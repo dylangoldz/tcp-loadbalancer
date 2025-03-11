@@ -1,0 +1,17 @@
+# Use Python image from Docker Hub
+FROM python:3.9-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy your load balancer code into the container
+COPY loadbalancer.py /app/
+
+# Expose the port your load balancer will use
+EXPOSE 8080
+
+# Install any dependencies (if needed, e.g., if you're using packages)
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# Command to run the load balancer
+CMD ["python", "loadbalancer.py"]

@@ -1,0 +1,14 @@
+# Use Python image from Docker Hub
+FROM python:3.9-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy your backend server code into the container
+COPY basic_backend_server.py /app/
+
+# Expose the port dynamically
+EXPOSE 9001
+
+# Command to run the backend server (using an environment variable for port)
+CMD python basic_backend_server.py ${PORT}
