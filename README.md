@@ -39,12 +39,6 @@ This project implements a simple TCP load balancer using Python and Docker. It d
 - Add rate limiting and connection pooling
 - Develop an admin interface for monitoring and configuration
 
-## Contributing
-Feel free to submit issues or pull requests if you have any improvements or bug fixes.
-
-## License
-This project is licensed under the MIT License.
-
 ## Overview
 
 This project is an L4 TCP load balancer that distributes incoming client requests to a pool of backend servers using a round-robin approach. The load balancer ensures that client requests are evenly distributed across the available backend servers, providing efficient load distribution and improved performance.
